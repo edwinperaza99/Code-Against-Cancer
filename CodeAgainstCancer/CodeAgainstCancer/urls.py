@@ -24,7 +24,7 @@ from .views import SignUpView, login_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.login_view, name='login'),  # Mapping root URL to custom login view
+    path('', views.login_view,  name='login'),  # Mapping root URL to custom login view
     path('signup/', SignUpView.as_view(), name='signup'),
-    path('login/', include('django.contrib.auth.urls')),  # Include other auth URLs
+    path('registration/', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
