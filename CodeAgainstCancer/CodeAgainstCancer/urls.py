@@ -27,4 +27,5 @@ urlpatterns = [
     path('', views.login_view,  name='login'),  # Mapping root URL to custom login view
     path('signup/', SignUpView.as_view(), name='signup'),
     path('registration/', include('django.contrib.auth.urls')),
+    path('home/', views.homepageView, name = 'home'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
