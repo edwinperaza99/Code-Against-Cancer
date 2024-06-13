@@ -131,3 +131,12 @@
     width: 100%;
     transition: margin-left 0.5s;
 }
+
+.bg-lightblue {
+    background-color: #ADD8E6 !important;
+}
+
+.footer .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}

@@ -1,29 +1,24 @@
 {% extends "base.html" %}
-{% load static %}
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+</head>
 
-{% block title %}Welcome to CodeAgainstCancer{% endblock %}
 
-{% block head %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
-<html>
-<head>
-    <title>Welcome to CodeAgainstCancer</title>
-</head>
 <body class="login">
-    <div class="shadow-wrap">
-        <div class="form-wrap">
-            <h3>Login</h3>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form }}
-                <button type="submit" href="{% url 'home'%}">Submit</button>
-            </form>
-            <a class="signup-link" href="{% url 'signup' %}">Sign Up</a>
-        </div>
-    </div>
+  <div class="shadow-wrap">
+  <div class="form-wrap">
+    <h3>Login </h3>
+  <form method="POST">
+  {% csrf_token %}
+  {{form}}
+  <button type="submit">Submit</button>
+  </form>
+  <a class="signup-link" href="{% url 'signup' %}">Signup</a>
+  </div>
+  </div>
 </body>
-</html>
 {% endblock content %}
