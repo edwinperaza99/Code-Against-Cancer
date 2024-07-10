@@ -80,29 +80,29 @@
   font-size: 12px;
 }
 .sidebar {
-    width: 0;
-    height: 100vh;
-    background-color: #f8f9fa;
-    overflow-x: hidden;
-    transition: width 0.5s, visibility 0s 0.5s, opacity 0.5s;
-    position: fixed;
-    z-index: 1;
-    visibility: hidden;
-    opacity: 0;
+  display: none; /* Hide sidebar by default */
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 200px;
+  height: calc(100vh - 60px);
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+  z-index: 1;
+  overflow-y: auto;
+  transition: width 0.3s ease;
 }
 
-/* Show the sidebar when hovered */
-.sidebar:hover {
-    width: 200px;
-    visibility: visible;
-    opacity: 1;
-    transition: width 0.5s, visibility 0s, opacity 0.5s;
+.sidebar.active {
+  display: block; /* Show sidebar when active */
 }
 
-/* Adjust the content margin on sidebar hover */
-.sidebar:hover ~ .content {
-    margin-left: 200px;
-    transition: margin-left 0.5s;
+.navbar-nav .nav-item {
+  position: relative;
+}
+
+.navbar-nav .nav-item:hover .sidebar {
+  display: block; /* Show sidebar on hover */
 }
 
 /* Sidebar list styles */

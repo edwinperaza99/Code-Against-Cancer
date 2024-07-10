@@ -1,11 +1,15 @@
 # CodeAgainstCancer/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from accounts.views import homepageView  # Adjust as per your views import
+from django.conf import settings
+from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', homepageView, name='home'),  # Adjust as per your view function
-    path('accounts/', include('accounts.urls')),  # Make sure this import is correct
+    path("accounts/", include("accounts.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", views.homepageView , name="home"),
+    path("logout", views.user_logout , name='logout'),
     # Add more URL patterns as needed
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
