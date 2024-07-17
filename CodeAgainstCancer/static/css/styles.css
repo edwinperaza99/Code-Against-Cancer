@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Mulish", sans-serif;
+  font-family: "Montserrat", sans-serif;
   transition: 0.3s all ease-in-out;
 }
 .login {
@@ -54,6 +54,8 @@
   margin-top: 30px;
   line-height: 26px;
 }
+
+
 .signup-link {
   color: #10182f;
   font-size: 15px;
@@ -73,20 +75,24 @@
 }
 
 .navbar a {
-  font-family: Verdana !important;
+  font-family: "Montserrat", sans-serif !important;
+  color: #ffffff;
 }
+.navbar {
+  background-color: #ADD8E6 !important;
+}
+
 .small-input {
   width: 50%;
   font-size: 12px;
 }
 .sidebar {
- /* Hide sidebar by default */
   position: absolute;
   top: 60px;
   left: 0;
-  width: 200px;
+  width: 160px;
   height: calc(100vh - 60px);
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   border-right: 1px solid #ddd;
   z-index: 1;
   overflow-y: auto;
@@ -123,6 +129,7 @@
     color: #000;
     display: block;
 }
+
 
 /* Content styles */
 .content {

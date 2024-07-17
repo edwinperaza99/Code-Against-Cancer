@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'django_google_fonts',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
     'static/',
 ]
+GOOGLE_FONTS = ["Montserrat"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -12,10 +12,13 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top bg-light">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'images/CACLOGO.jpg' %}" alt="Logo" width="35" height="32" class="d-inline-block align-text-top" />
@@ -35,9 +38,9 @@
                 </ul>
                 <form class="d-flex">
                     {% if user.is_authenticated %}
-                    <button class='btn btn-outline-success' formaction="{% url 'logout' %}">Logout</button>
+                    <button class='btn btn-outline-primary' formaction="{% url 'logout' %}">Logout</button>
                     {% else %}
-                    <a class="btn btn-outline-success" href="{% url 'login' %}">Login/Signup</a>
+                    <a class="btn btn-outline-primary" href="{% url 'login' %}">Login/Signup</a>
                     {% endif %}
                 </form>
             </div>
@@ -47,6 +50,10 @@
     {% if user.is_authenticated %}
     <div class="container-fluid mt-5 pt-4">
         <div class="row">
+            <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar">
+                Toggle Sidebar
+            </button>
+
             <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
