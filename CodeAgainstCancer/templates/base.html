@@ -106,15 +106,15 @@
 
     </div>
     {% endif %} {% if user.is_authenticated %}
-    <footer class="navbar navbar-expand-lg fixed-bottom bg-lightblue">
+    <footer class="navbar navbar-expand-lg fixed-bottom bg-lightblue footer-custom">
       <div class="container-fluid justify-content-between">
         <button class="btn btn-primary">Contact Your Nutritionist</button>
         <a class="navbar-brand mx-auto" href="{% url 'home' %}">
           <img
             src="{% static 'images/CACLOGO.jpg' %}"
             alt="Logo"
-            width="100"
-            height="95"
+            width="85"
+            height="80"
             class="d-inline-block align-text-top"
           />
         </a>

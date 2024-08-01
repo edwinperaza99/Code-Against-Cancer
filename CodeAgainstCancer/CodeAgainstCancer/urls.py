@@ -11,5 +11,6 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("", views.homepageView , name="home"),
     path("logout", views.user_logout , name='logout'),
+    path('accounts/', include('allauth.urls')),
     # Add more URL patterns as needed
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
