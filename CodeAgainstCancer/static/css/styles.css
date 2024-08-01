@@ -87,47 +87,76 @@
   font-size: 12px;
 }
 .sidebar {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 160px;
-  height: calc(100vh - 60px);
-  background-color: #ffffff;
-  border-right: 1px solid #ddd;
-  z-index: 1;
-  overflow-y: auto;
-  transition: width 0.3s ease;
+    height: 100%;
+    width: 50px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    white-space: nowrap;
 }
 
-.sidebar.active {
-  display: block; /* Show sidebar when active */
-}
-
-.navbar-nav .nav-item {
-  position: relative;
-}
-
-.navbar-nav .nav-item:hover .sidebar {
-  display: block; /* Show sidebar on hover */
-}
-
-/* Sidebar list styles */
-.sidebar ul {
-    padding: 0;
-    list-style: none;
-    margin: 0;
-}
-
-.sidebar ul li {
-    padding: 10px;
-    text-align: left;
-    white-space: nowrap; /* Prevent text from wrapping */
-}
-
-.sidebar ul li a {
+.sidebar a {
+    padding: 8px 8px 8px 16px;
     text-decoration: none;
-    color: #000;
+    font-size: 25px;
+    color: #818181;
     display: block;
+    transition: 0.3s;
+}
+
+.sidebar a .icon-text {
+    display: none; /* Hide text initially */
+}
+
+.sidebar:hover a .icon-text {
+    display: inline-block; /* Show text on hover */
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.material-icons,
+.icon-text {
+    vertical-align: middle;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.material-icons {
+    padding-bottom: 3px;
+    margin-right: 30px;
+}
+
+.sidebar:hover #main {
+    margin-left: 250px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+    margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
 }
 
 
