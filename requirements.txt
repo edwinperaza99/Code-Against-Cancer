@@ -1,6 +1,10 @@
 asgiref==3.8.1
-Django==5.0.3
+Django
 sqlparse==0.4.4
 django-allauth
 PyJWT
 django-extensions
+requests
+cryptography
+django-bootstrap-v5
+django_google_fonts
