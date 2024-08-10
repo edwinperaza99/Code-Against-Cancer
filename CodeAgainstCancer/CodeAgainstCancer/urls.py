@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+
 from . import views
 
 urlpatterns = [
@@ -12,5 +13,6 @@ urlpatterns = [
     path("", views.homepageView , name="home"),
     path("logout", views.user_logout , name='logout'),
     path('accounts/', include('allauth.urls')),
+    path('resources/', views.resources, name='resources'),
     # Add more URL patterns as needed
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
