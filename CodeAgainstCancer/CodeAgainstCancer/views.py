@@ -21,3 +21,6 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
+
+def resources(request):
+    return render(request, 'resources/resources.html')
