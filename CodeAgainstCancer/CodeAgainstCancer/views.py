@@ -1,7 +1,9 @@
+import requests
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.conf import settings
 
 
 def user_logout(request):
@@ -23,4 +25,20 @@ def login_view(request):
     return render(request, 'registration/login.html', {'form': form})
 
 def resources(request):
-    return render(request, 'resources/resources.html')
+    query = "cancer patients support"
+    data = get_youtube_videos(query)
+    videos = data.get("items", [])
+    context = { "videos": videos }
+    return render(request, 'resources/resources.html', context)
+
+def get_youtube_videos(query):
+    url = "https://www.googleapis.com/youtube/v3/search"
+    params = {
+        "part": "snippet",
+        "q": query,
+        "maxResults": 10,
+        "order": "date",
+        "key": settings.YOUTUBE_API_KEY
+    }
+    response = requests.get(url, params=params)
+    return response.json()
