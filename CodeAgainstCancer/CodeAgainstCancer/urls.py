@@ -14,5 +14,6 @@ urlpatterns = [
     path("logout", views.user_logout , name='logout'),
     path('accounts/', include('allauth.urls')),
     path('resources/', views.resources, name='resources'),
+    path('about/', views.about, name='about'),
     # Add more URL patterns as needed
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
