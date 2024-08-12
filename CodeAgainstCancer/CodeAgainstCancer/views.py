@@ -42,3 +42,6 @@ def get_youtube_videos(query):
     }
     response = requests.get(url, params=params)
     return response.json()
+
+def about(request):
+    return render(request, 'about/about.html')

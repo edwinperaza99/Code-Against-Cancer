@@ -217,3 +217,11 @@
 .margin-bottom {
 	margin-bottom: 150px;
 }
+
+.about-img {
+    width: 480px;
+    height: 250px; 
+    object-fit: cover; 
+    display: block;
+    margin: 0 auto; 
+}
