@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+{% block content %}
+<div class="profile-container">
+    <div class="profile-left">
+        <div class="profile-pic">
+            {% if user_profile.profile_pic %}
+                <img src="/" alt="Profile Picture" />
+            {% else %}
+                <img src="/" alt="Default Profile Picture" />
+            {% endif %}
+        </div>
+        <div class="profile-info">
+            <h2>{{ user_profile.cancer_type }} - Stage {{ user_profile.cancer_stage }}</h2>
+            <p>Assigned Nutritionist: </p>
+        </div>
+    </div>
+    <div class="profile-right">
+        <h2>Personalized Nutritional Information</h2>
+        <div class="nutritional-info">
+            <div class="dietary-restrictions">
+                <h3>Dietary Restrictions</h3>
+                <p> </p>
+            </div>
+            <div class="recommended-foods">
+                <h3>Recommended Foods</h3>
+                <p></p>
+            </div>
+        </div>
+        <div class="special-instructions">
+            <h3>Special Instructions</h3>
+            <p></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

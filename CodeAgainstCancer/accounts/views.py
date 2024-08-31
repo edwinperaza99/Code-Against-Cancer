@@ -1,9 +1,11 @@
 from .forms import CustomUserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django import forms   
 from django.contrib.auth import authenticate, login 
 from django.contrib import messages
+from .models import UserProfile
+from django.contrib.auth.decorators import login_required
 
 def signup(request):
     if request.method == 'POST':
@@ -20,4 +22,10 @@ def signup(request):
         form = CustomUserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
-
+@login_required
+def profile_view(request):
+    user = request.user
+    context = {
+        'user_profile': user,
+    }
+    return render(request, 'profile/profile_page.html', context)

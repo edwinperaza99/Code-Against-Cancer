@@ -206,3 +206,41 @@
 .btn-google img {
   margin-right: 10px;
 }
+
+/* CSS for profile page */
+.profile-container {
+    display: flex;
+    padding: 20px;
+}
+
+.profile-left {
+    width: 30%;
+    text-align: left;
+}
+
+.profile-right {
+    width: 70%;
+    padding-left: 20px;
+}
+
+.profile-pic img {
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+.profile-info {
+    margin-top: 20px;
+}
+
+.nutritional-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dietary-restrictions, .recommended-foods {
+    width: 48%;
+}
+
+.special-instructions {
+    margin-top: 20px;
+}
