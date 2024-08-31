@@ -2,35 +2,39 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 {% block content %}
-<div class="profile-container">
-    <div class="profile-left">
-        <div class="profile-pic">
+<div class="container mt-5" style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <!-- Left Column -->
+    <div class="profile-left" style="width: 45%; padding-right: 20px;">
+        <div class="profile-pic" style="text-align: center; margin-bottom: 20px;">
             {% if user_profile.profile_pic %}
-                <img src="/" alt="Profile Picture" />
+                <img src="/" alt="Profile Picture" style="width: 125px; height: 125px; border-radius: 50%;" />
             {% else %}
-                <img src="/" alt="Default Profile Picture" />
+                <img src="{% static 'images/defaultprofile.png' %}" alt="Default Profile Picture" style="width: 125px; height: 125px; border-radius: 50%;" />
             {% endif %}
         </div>
-        <div class="profile-info">
-            <h2>{{ user_profile.cancer_type }} - Stage {{ user_profile.cancer_stage }}</h2>
-            <p>Assigned Nutritionist: </p>
+        <div class="profile-info" style="text-align: center;">
+            <h3 style="margin: 10px 0;">{{user.get_full_name}}</h3>
+            <h2 style="margin: 10px 0;">{{ cancer_type_display }} - Stage {{ user_profile.cancer_stage }}</h2>
+            <p>Assigned Nutritionist: [Nutritionist Name]</p>
         </div>
     </div>
-    <div class="profile-right">
-        <h2>Personalized Nutritional Information</h2>
+    
+    <!-- Right Column -->
+    <div class="profile-right" style="width: 45%;">
+        <h2 style="margin-bottom: 20px;">Personalized Nutritional Information</h2>
         <div class="nutritional-info">
-            <div class="dietary-restrictions">
+            <div class="dietary-restrictions" style="margin-bottom: 20px;">
                 <h3>Dietary Restrictions</h3>
-                <p> </p>
+                <p>...</p>
             </div>
-            <div class="recommended-foods">
+            <div class="recommended-foods" style="margin-bottom: 20px;">
                 <h3>Recommended Foods</h3>
-                <p></p>
+                <p>...</p>
             </div>
         </div>
         <div class="special-instructions">
             <h3>Special Instructions</h3>
-            <p></p>
+            <p>...</p>
         </div>
     </div>
 </div>

@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import UserProfile
 from django.contrib.auth.decorators import login_required
+from .forms import CANCER_TYPE_CHOICES
 
 def signup(request):
     if request.method == 'POST':
@@ -25,7 +26,11 @@ def signup(request):
 @login_required
 def profile_view(request):
     user = request.user
+    user_profile = get_object_or_404(UserProfile, user=user)
+    cancer_type_display = dict(CANCER_TYPE_CHOICES).get(user_profile.cancer_type, user_profile.cancer_type)
     context = {
-        'user_profile': user,
+        'user': user,
+        'user_profile': user_profile,
+        'cancer_type_display': cancer_type_display
     }
     return render(request, 'profile/profile_page.html', context)
