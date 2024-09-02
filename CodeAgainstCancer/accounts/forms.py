@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .models import UserProfile
 
 CANCER_TYPE_CHOICES = [
+    ('', 'Select your cancer type:'),
     ('bone', 'Bone Cancer'),
     ('brain_nervous', 'Brain and Nervous System Cancer'),
     ('breast', 'Breast Cancer'),
@@ -52,6 +53,8 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'cancer_type', 'date_diagnosed', 'cancer_stage', 'gender']
 
+    
+
     def save(self, commit=True):
         user = super(CustomUserCreationForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
@@ -78,3 +81,4 @@ class CustomUserCreationForm(UserCreationForm):
                 user_profile.save()
 
         return user
+    

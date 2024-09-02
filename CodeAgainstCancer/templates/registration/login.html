@@ -19,6 +19,7 @@
   <button type="submit">Submit</button>
   </form>
   <a class="signup-link" href="{% url 'signup' %}">Signup</a>
+  <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
   <a class="btn btn-google" href="{% url 'google_login' %}">
     <img src="{% static 'images/google-logo.png' %}" alt="Google Logo" width="20" height="20" class="me-2" />
     Login with Google
