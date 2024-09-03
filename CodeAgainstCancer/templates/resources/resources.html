@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} Resources {% endblock %} 
+
+{% block content %}
+<div class="container mt-5">
+	<h1 class="justify-content">Get Support Now</h1>
+	<p>
+		We understand that cancer can be a difficult journey. We are here to help
+		you every step of the way. Below are some resources that can help you get
+		the support you need.
+	</p>
+    <div class="row">
+        <div class="col">
+            <h2>Resources</h2>
+            {% if videos %}
+                <div class="video-list">
+                    {% for video in videos %}
+                        <div class="video-item">
+                            <a href="https://www.youtube.com/watch?v={{ video.id.videoId }}" target="_blank">
+                                <img src="{{ video.snippet.thumbnails.default.url }}" alt="{{ video.snippet.title }}">
+                                <p>{{ video.snippet.title }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No videos found.</p>
+            {% endif %}
+        </div>
+        <div class="col">
+            <h2>Support Groups</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}
