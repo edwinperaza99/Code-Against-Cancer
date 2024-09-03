@@ -5,6 +5,7 @@
   font-family: "Montserrat", sans-serif;
   transition: 0.3s all ease-in-out;
 }
+
 .login {
   display: flex;
   justify-content: center;
@@ -12,35 +13,23 @@
   height: 100vh;
   background-color: #fff;
 }
+
 .shadow-wrap {
   border-radius: 5px;
   padding: 25px;
   background-color: #f0f2fb;
 }
+
 .form-wrap {
   background-color: #fff;
   padding: 70px;
 }
+
 .form-wrap form * {
   display: block;
   width: 100%;
 }
-.form-wrap form label {
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 26px;
-}
-.form-wrap form input {
-  padding: 12px 20px;
-  border-radius: 5px;
-  border: 1px solid #dae1f5;
-  background: #fff;
-  color: #545d7a;
-}
-#id_username {
-  margin-bottom: 20px;
-}
+
 .form-wrap button {
   border-radius: 5px;
   background: #10182f;
@@ -55,6 +44,11 @@
   line-height: 26px;
 }
 
+.form-wrap button:hover {
+  background-color: #fff;
+  color: #10182f;
+  border-color: #10182f;
+}
 
 .signup-link {
   color: #10182f;
@@ -65,120 +59,9 @@
   display: block;
   text-decoration: none;
 }
+
 .signup-link:hover {
   text-decoration: underline;
-}
-.form-wrap button:hover {
-  background-color: #fff;
-  color: #10182f;
-  border-color: #10182f;
-}
-
-.navbar a {
-  font-family: "Montserrat", sans-serif !important;
-  color: #ffffff;
-}
-.navbar {
-  background-color: #ADD8E6 !important;
-}
-
-.small-input {
-  width: 50%;
-  font-size: 12px;
-}
-.sidebar {
-    height: 100%;
-    width: 50px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #ADD8E6;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    white-space: nowrap;
-}
-
-.sidebar a {
-    padding: 8px 8px 8px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #f1f1f1;
-    display: block;
-    transition: 0.2s;
-}
-
-.sidebar a .icon-text {
-    display: none; /* Hide text initially */
-}
-
-.sidebar:hover a .icon-text {
-    display: inline-block; /* Show text on hover */
-}
-
-.sidebar a:hover {
-    color: rgb(175, 174, 184);
-}
-
-.material-icons,
-.icon-text {
-    vertical-align: middle;
-}
-
-.sidebar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-.material-icons {
-    padding-bottom: 3px;
-    margin-right: 30px;
-}
-
-.sidebar:hover #main {
-    margin-left: 250px;
-}
-
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-    margin-left: 50px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidebar {
-        padding-top: 15px;
-    }
-    .sidebar a {
-        font-size: 18px;
-    }
-}
-
-
-/* Content styles */
-.content {
-    margin-left: 0;
-    padding: 20px;
-    width: 100%;
-    transition: margin-left 0.5s;
-}
-
-.bg-lightblue {
-    background-color: #ADD8E6 !important;
-}
-
-.footer .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.footer-custom {
-  height: 100px;
 }
 
 /* Styling for the Google Login Button */
@@ -194,7 +77,7 @@
   font-size: 16px;
   font-weight: 500;
   transition: background-color 0.3s, border-color 0.3s;
-  margin-top: 10px; /* Adjust this value to bring the button down */
+  margin-top: 20px;
 }
 
 .btn-google:hover {
@@ -206,5 +89,3 @@
 .btn-google img {
   margin-right: 10px;
 }
-
-/* CSS for profile page */
