@@ -8,7 +8,8 @@ class UserProfile(models.Model):
     date_diagnosed = models.DateField(blank=True, null=True)
     cancer_stage = models.CharField(max_length=50, blank=True, null=True)
     gender = models.CharField(max_length=10, blank=True, null=True)
-    
+    profile_pic = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
+
     def __str__(self):
         return self.user.username
     

@@ -1,11 +1,11 @@
 import json
 import os
 from django.conf import settings
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, UpdateUserForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django import forms   
-from django.contrib.auth import authenticate, login 
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import UserProfile
 from django.contrib.auth.decorators import login_required
@@ -13,7 +13,7 @@ from .forms import CANCER_TYPE_CHOICES
 
 def signup(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
@@ -48,3 +48,19 @@ def profile_view(request):
         'cancer_info': cancer_info
     }
     return render(request, 'profile/profile_page.html', context)
+
+def update_profile(request):
+    if request.user.is_authenticated:
+        current_user = User.objects.get(id=request.user.id)
+        user_form = UpdateUserForm(request.POST or None, instance=current_user)
+
+        if user_form.is_valid():
+            user_form.save()
+            backend = request.session.get('_auth_user_backend')
+            login(request, current_user, backend=backend)
+            messages.success(request, ("Your profile has been updated!"))
+            return redirect('home')
+        return render(request, 'profile/update_profile.html', {'user_form':user_form})
+    else:
+        messages.error(request, "You must be logged in to access that page.")
+        return redirect('home')
