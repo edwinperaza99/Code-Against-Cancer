@@ -1,17 +1,20 @@
 import requests
-from django.contrib.auth import login, authenticate, logout
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from django.contrib.auth.forms import AuthenticationForm
+from accounts.models import UserProfile
 from django.conf import settings
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
 
 
 def user_logout(request):
     logout(request)
-    return redirect('home')
+    return redirect("home")
+
 
 def homepageView(request):
-    return render(request, 'home.html')
+    return render(request, "home.html")
+
 
 def login_view(request):
     if request.method == "POST":
@@ -21,21 +24,41 @@ def login_view(request):
             login(request, user)
 
             # Check if the user has completed their profile
-            if not (user.profile.cancer_type and user.profile.date_diagnosed and user.profile.cancer_stage and user.profile.gender):
-                return redirect('user_profile.html')  # Redirect to profile form if not completed
+            if not (
+                user.profile.cancer_type
+                and user.profile.date_diagnosed
+                and user.profile.cancer_stage
+                and user.profile.gender
+            ):
+                return redirect(
+                    "user_profile.html"
+                )  # Redirect to profile form if not completed
 
-            return redirect('home')
+            return redirect("home")
     else:
         form = AuthenticationForm()
-    
-    return render(request, 'registration/login.html', {'form': form})
+
+    return render(request, "registration/login.html", {"form": form})
+
 
 def resources(request):
-    query = "cancer patients support"
+    user = request.user
+    # check if user is logged in
+    if not user.is_authenticated:
+        return redirect("login")
+
+    user_profile = get_object_or_404(UserProfile, user=user)
+
+    # generate query based on user profile or default query
+    if user_profile.cancer_type and user_profile.cancer_stage:
+        query = f"{user_profile.cancer_type} cancer {user_profile.cancer_stage} stage"
+    else:
+        query = "cancer patients support"
     data = get_youtube_videos(query)
     videos = data.get("items", [])
-    context = { "videos": videos }
-    return render(request, 'resources/resources.html', context)
+    context = {"videos": videos}
+    return render(request, "resources/resources.html", context)
+
 
 def get_youtube_videos(query):
     url = "https://www.googleapis.com/youtube/v3/search"
@@ -44,10 +67,11 @@ def get_youtube_videos(query):
         "q": query,
         "maxResults": 10,
         "order": "relevance",
-        "key": settings.YOUTUBE_API_KEY
+        "key": settings.YOUTUBE_API_KEY,
     }
     response = requests.get(url, params=params)
     return response.json()
 
+
 def about(request):
-    return render(request, 'about/about.html')
+    return render(request, "about/about.html")
