@@ -12,34 +12,26 @@
 		the support you need.
 	</p>
 	<div class="row margin-bottom">
-		<div class="col">
+		<div class="col-lg-6">
 			<h2>Related videos</h2>
 			{% if videos %}
 			<div class="">
 				{% for video in videos %}
-				<a
-					class="reset-anchor"
-					href="https://www.youtube.com/watch?v={{ video.id.videoId }}"
-					target="_blank"
-				>
-					<div class="card mb-3">
-						<img
-							class="card-img-top video-thumbnail-img"
-							src="{{ video.snippet.thumbnails.high.url }}"
-							alt="{{ video.snippet.title }}"
-						/>
-						<div class="card-body">
-							<h5 class="card-title reset-anchor">{{ video.snippet.title }}</h5>
-						</div>
-					</div>
-				</a>
+                <div class="card mb-3">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/{{ video.id.videoId }}" allowfullscreen></iframe>
+                    </div>
+                    {% comment %} <div class="card-body">
+                        <h5 class="card-title">{{ video.snippet.title }}</h5>
+                    </div> {% endcomment %}
+                </div>
 				{% endfor %}
 			</div>
 			{% else %}
 			<p>No videos found.</p>
 			{% endif %}
 		</div>
-		<div class="col">
+		<div class="col-lg-6">
 			<h2>Other Resources</h2>
 			<div class="accordion" id="accordionExample">
 				<div class="accordion-item">
